@@ -1,0 +1,28 @@
+{
+	"name": "asm3",
+	"version": "1.0.0",
+	"description": "this project uses selenium to automate testing process. The test cases for Moodle app has been devised in the asm2",
+	"main": "index.js",
+	"scripts": {
+		"test": "mocha --no-timeouts --reporter mochawesome"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Thanhlcc/testing-asm3.git"
+	},
+	"keywords": [
+		"testing"
+	],
+	"author": "Le Thanh",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Thanhlcc/testing-asm3/issues"
+	},
+	"homepage": "https://github.com/Thanhlcc/testing-asm3#readme",
+	"dependencies": {
+		"chai": "^4.3.10",
+		"mocha": "^10.2.0",
+		"mochawesome": "^7.1.3",
+		"selenium-webdriver": "^4.15.0"
+	}
+}
