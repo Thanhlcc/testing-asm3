@@ -1,0 +1,104 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-11-30T10:46:25.384Z",
+    "end": "2023-11-30T10:46:44.937Z",
+    "duration": 19553,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "71ad66d7-2018-4cb5-962d-74b4fdbe7545",
+      "title": "",
+      "fullFile": "E:\\HCMUT\\231\\Software Testing\\project3\\testing-asm3\\test\\firstTest.js",
+      "file": "\\test\\firstTest.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "0cf75bdf-db59-4907-8ba1-afcfb64fd68d",
+          "title": "Test login",
+          "fullFile": "E:\\HCMUT\\231\\Software Testing\\project3\\testing-asm3\\test\\firstTest.js",
+          "file": "\\test\\firstTest.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Login successfully",
+              "fullTitle": "Test login Login successfully",
+              "timedOut": false,
+              "duration": 19541,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "// get the browser\nlet driver = await new Builder().forBrowser('chrome').build();\n// go to the application\nawait driver.get('https://school.moodledemo.net/login/index.php');\n// add a new todo\nvar username = driver.findElement(By.name('username'))\nvar password = driver.findElement(By.name('password'))\n// var button = driver.findElement(By.id('loginbtn'))\n// await username.sendKeys('student', Key.RETURN)\n// await password.sendKeys('moodle', Key.RETURN)\n// await button.click();\n\t// .findElement(By.id('username'))\nusername.sendKeys('student', Key.TAB)\n\t// .findElement(By.id('password'))\npassword.sendKeys('moodle', Key.RETURN)\n\t// .findElement(By.id('loginbtn'))\n\t// .click()\n// get new page\n// let new_driver = await new Builder().forBrowser('chrome').build()\n// await driver.navigate('https://school.moodledemo.net/my/courses.php')\n// url = await driver.getCurrentUrl()\n// alert(url)\nawait driver.navigate('https://school.moodledemo.net/my/courses.php')\nconst textContent = await driver\n\t.findElement(By.id('instance-472-header'))\n\t.getText();\n// assert the value of the newly added todo\ntextContent.should.equal('Course overview');\ndriver.quit();",
+              "err": {
+                "message": "NoSuchElementError: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"*[id=\"instance-472-header\"]\"}\n  (Session info: chrome=119.0.6045.161)",
+                "estack": "NoSuchElementError: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"*[id=\"instance-472-header\"]\"}\n  (Session info: chrome=119.0.6045.161)\n    at Object.throwDecodedError (node_modules\\selenium-webdriver\\lib\\error.js:524:15)\n    at parseHttpResponse (node_modules\\selenium-webdriver\\lib\\http.js:601:13)\n    at Executor.execute (node_modules\\selenium-webdriver\\lib\\http.js:529:28)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)\n    at async Driver.execute (node_modules\\selenium-webdriver\\lib\\webdriver.js:745:17)\n    at async toWireValue (node_modules\\selenium-webdriver\\lib\\webdriver.js:145:15)\n    at async E:\\HCMUT\\231\\Software Testing\\project3\\testing-asm3\\node_modules\\selenium-webdriver\\lib\\webdriver.js:195:16\n    at async forEachKey (node_modules\\selenium-webdriver\\lib\\webdriver.js:189:9)\n    at async convertKeys (node_modules\\selenium-webdriver\\lib\\webdriver.js:194:3)\n    at async Driver.execute (node_modules\\selenium-webdriver\\lib\\webdriver.js:743:22)\n    at async Context.<anonymous> (test\\firstTest.js:30:23)",
+                "diff": null
+              },
+              "uuid": "65de6813-0e9d-4970-a24f-b98da5f2bf79",
+              "parentUUID": "0cf75bdf-db59-4907-8ba1-afcfb64fd68d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "65de6813-0e9d-4970-a24f-b98da5f2bf79"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 19541,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 0
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 0
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
