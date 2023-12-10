@@ -21,6 +21,7 @@
 	},
 	"homepage": "https://github.com/Thanhlcc/testing-asm3#readme",
 	"dependencies": {
+		"assert": "^2.1.0",
 		"chai": "^4.3.10",
 		"dotenv": "^16.3.1",
 		"mocha": "^10.2.0",
