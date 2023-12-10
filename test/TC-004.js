@@ -9,12 +9,12 @@ class EventType {
 	static GROUP = 'Group';
 	static USER = 'User';
 }
-['MicrosoftEdge'].forEach((browserName) => {
+['chrome'].forEach((browserName) => {
 	describe(`${browserName}: Teacher create a new event`, function () {
 		let driver;
 		let vars;
 		beforeEach(async function () {
-			// const chromeOptions = new chrome.Options().headless();
+			const chromeOptions = new chrome.Options().headless();
 			driver = await new Builder()
 				.forBrowser(browserName)
 				// .setChromeOptions(chromeOptions)
@@ -55,7 +55,7 @@ class EventType {
 			};
 			await createEventTemplate(data, assertEventCreated);
 		});
-		it.only('TC-004-003: Create course event with duration left empty', async function () {
+		it('TC-004-003: Create course event with duration left empty', async function () {
 			const data = {
 				event_title: 'Class Meeting',
 				event: {
@@ -65,11 +65,10 @@ class EventType {
 				timeout_duration: null,
 			};
 			const assertClause = async () => {
-				await driver.sleep(4000);
 				const elements = await driver.findElements(
 					By.id('fgroup_id_error_durationgroup')
 				);
-				elements.to.be.an('array').that.is.not.empty;
+				elements.should.be.an('array').that.is.not.empty;
 				const text = await elements[0].getText();
 				text.should.to.equal(
 					'The duration in minutes you have entered is invalid. Please enter the duration in minutes greater than 0 or select no duration.'
@@ -100,7 +99,6 @@ class EventType {
 				},
 			};
 			const assertClause = async () => {
-				await driver.sleep(1000);
 				const elements = await driver.findElements(
 					By.xpath('//*[@id="id_error_courseid"]')
 				);
@@ -145,7 +143,7 @@ class EventType {
 					By.id('fgroup_id_error_durationgroup')
 				);
 				elements.should.be.an('array').that.is.not.empty;
-				assert(await elements[0].getText()).to.be.equal(
+				(await elements[0].getText()).should.to.be.equal(
 					'The duration in minutes you have entered is invalid. Please enter the duration in minutes greater than 0 or select no duration.'
 				);
 				await driver
@@ -176,12 +174,12 @@ class EventType {
 				const elements = await driver.findElements(
 					By.xpath('//*[@id="id_error_groupcourseid"]')
 				);
-				elements.shoud.be.an('array').that.is.not.empty;
+				elements.should.be.an('array').that.is.not.empty;
 				(
 					await driver
 						.findElement(By.id('id_error_groupcourseid'))
 						.getText()
-				).shoud.be
+				).should.be
 					.a('string')
 					.that.equal('Select a course');
 				await driver
@@ -199,18 +197,8 @@ class EventType {
 					group_name: null,
 				},
 			};
-			const assertClause = async () => {
-				await driver
-					.findElement(By.xpath('//div[5]/div[2]/ul/li'))
-					.click();
-				{
-					const value = await driver
-						.findElement(By.xpath('//*[@id="id_groupid"]'))
-						.getAttribute('value');
-					value.should.to.equal('57');
-				}
-			};
-			await createEventTemplate(data, assertClause);
+
+			await createEventTemplate(data, assertEventCreated);
 		});
 		it('TC-004-011: Create a user event with duration', async function () {
 			const data = {
@@ -238,7 +226,7 @@ class EventType {
 				(await elements[0].getText()).should.be
 					.a('string')
 					.that.is.equal(
-						'The sduration in minutes you have entered is invalid. Please enter the duration in minutes greater than 0 or select no duration.'
+						'The duration in minutes you have entered is invalid. Please enter the duration in minutes greater than 0 or select no duration.'
 					);
 				await driver
 					.findElement(By.css("button[data-action='hide']"))
@@ -376,7 +364,6 @@ class EventType {
 			 */
 			await driver.findElement(By.id('id_eventtype')).click();
 			dropdown = await driver.findElement(By.id('id_eventtype'));
-			console.log(`//option[. = '${data.event.type}']`);
 			await dropdown
 				.findElement(By.xpath(`//option[. = '${data.event.type}']`))
 				.click();
@@ -417,7 +404,7 @@ class EventType {
 				}
 				case EventType.GROUP: {
 					// Choose the course
-					if (data.event.course_name) {
+					if (data.event.course_name !== undefined) {
 						await driver
 							.wait(
 								until.elementLocated(
@@ -426,16 +413,18 @@ class EventType {
 								3000
 							)
 							.click();
-						await driver
-							.wait(
-								until.elementLocated(
-									By.xpath(
-										`//div[contains(@class, 'modal-dialog ')]//li[@role='option'][.='${data.event.course_name}']`
-									)
-								),
-								3000
-							)
-							.click();
+						if (data.event.course_name) {
+							await driver
+								.wait(
+									until.elementLocated(
+										By.xpath(
+											`//div[contains(@class, 'modal-dialog ')]//li[@role='option'][.='${data.event.course_name}']`
+										)
+									),
+									3000
+								)
+								.click();
+						}
 					}
 					// Choose the group in such course
 					if (data.event.group_name !== undefined) {
@@ -447,16 +436,20 @@ class EventType {
 							),
 							3000
 						);
-						await driver
-							.findElement(By.xpath("//select[@name='groupid']"))
-							.click();
-						await driver
-							.findElement(
-								By.xpath(
-									`//option[. = '${data.event.group_name}']`
+						if (data.event.group_name) {
+							await driver
+								.findElement(
+									By.xpath("//select[@name='groupid']")
 								)
-							)
-							.click();
+								.click();
+							await driver
+								.findElement(
+									By.xpath(
+										`//option[. = '${data.event.group_name}']`
+									)
+								)
+								.click();
+						}
 					}
 					break;
 				}
@@ -479,14 +472,16 @@ class EventType {
 					let element = null;
 					element = await driver.findElement(By.id('id_repeats'));
 					assert(!(await element.isEnabled()));
-					await driver
-						.findElement(By.css('.form-check > label'))
-						.click();
-					element = await driver.findElement(By.id('id_repeats'));
-					assert(await element.isEnabled());
-					await driver
-						.findElement(By.id('id_repeats'))
-						.sendKeys(data.repeat_times);
+					if (data.repeat_times) {
+						await driver
+							.findElement(By.css('.form-check > label'))
+							.click();
+						element = await driver.findElement(By.id('id_repeats'));
+						assert(await element.isEnabled());
+						await driver
+							.findElement(By.id('id_repeats'))
+							.sendKeys(data.repeat_times);
+					}
 				}
 				/**
 				 * ==========Event duration============================
@@ -495,12 +490,14 @@ class EventType {
 					await driver
 						.findElement(By.css("input[id='id_duration_2']"))
 						.click();
-					await driver
-						.findElement(By.id('id_timedurationminutes'))
-						.click();
-					await driver
-						.findElement(By.id('id_timedurationminutes'))
-						.sendKeys(`${data.timeout_duration}`);
+					if (data.timeout_duration) {
+						await driver
+							.findElement(By.id('id_timedurationminutes'))
+							.click();
+						await driver
+							.findElement(By.id('id_timedurationminutes'))
+							.sendKeys(`${data.timeout_duration}`);
+					}
 				}
 			}
 			await driver.sleep(2000);
