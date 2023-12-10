@@ -4,7 +4,8 @@
 	"description": "this project uses selenium to automate testing process. The test cases for Moodle app has been devised in the asm2",
 	"main": "index.js",
 	"scripts": {
-		"test": "mocha --no-timeouts --reporter mochawesome"
+		"test": "mocha --no-timeouts --reporter mochawesome",
+		"dev": "mocha --no-timeouts"
 	},
 	"repository": {
 		"type": "git",
@@ -20,6 +21,7 @@
 	},
 	"homepage": "https://github.com/Thanhlcc/testing-asm3#readme",
 	"dependencies": {
+		"assert": "^2.1.0",
 		"chai": "^4.3.10",
 		"mocha": "^10.2.0",
 		"mochawesome": "^7.1.3",
