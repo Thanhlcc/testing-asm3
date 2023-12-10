@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2023-12-09T18:30:38.862Z",
-    "end": "2023-12-09T18:31:33.963Z",
-    "duration": 55101,
+    "start": "2023-12-10T11:02:09.738Z",
+    "end": "2023-12-10T11:03:11.854Z",
+    "duration": 62116,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "41e5930c-1579-4873-abe4-6a95371bf865",
+      "uuid": "7f8a3efe-a8b4-4075-9d8f-774d1b733a5d",
       "title": "",
       "fullFile": "E:\\Software Testing\\Project 3\\testing-asm3\\test\\gradeAssignment.js",
       "file": "\\test\\gradeAssignment.js",
@@ -27,36 +27,36 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "d176e859-c8da-4674-9fdf-4143c756d2ec",
-          "title": "Testing moodle 5 ",
+          "uuid": "23702534-0b77-4353-be29-e379fd78cbe9",
+          "title": "chrome: Testing moodle 5 ",
           "fullFile": "E:\\Software Testing\\Project 3\\testing-asm3\\test\\gradeAssignment.js",
           "file": "\\test\\gradeAssignment.js",
           "beforeHooks": [
             {
-              "title": "\"before each\" hook in \"Testing moodle 5 \"",
-              "fullTitle": "Testing moodle 5  \"before each\" hook in \"Testing moodle 5 \"",
+              "title": "\"before each\" hook in \"chrome: Testing moodle 5 \"",
+              "fullTitle": "chrome: Testing moodle 5  \"before each\" hook in \"chrome: Testing moodle 5 \"",
               "timedOut": false,
-              "duration": 28603,
+              "duration": 30293,
               "state": null,
               "speed": null,
               "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "driver = await new Builder().forBrowser('chrome').build()\nvars = {}\n/****************** SETUP TEST CASE ******************************/\nawait driver.get(\"https://school.moodledemo.net/login/index.php\")\nawait driver.findElement(By.id(\"username\")).click()\nawait driver.findElement(By.id(\"username\")).sendKeys(\"student\")\nawait driver.findElement(By.id(\"password\")).click()\nawait driver.findElement(By.id(\"password\")).sendKeys(\"moodle\")\nawait driver.findElement(By.id(\"loginbtn\")).click()\nawait driver.wait(until.elementsLocated(By.xpath('(//a[@href=\"https://school.moodledemo.net/course/view.php?id=71\"])')), 5000)\nlet course = await driver.findElement(By.xpath('(//a[@href=\"https://school.moodledemo.net/course/view.php?id=71\"])'))\nawait course.click()\nawait driver.get(\"https://school.moodledemo.net/course/view.php?id=71\")\nawait driver.manage().window().maximize()\n{\n    const elements = await driver.findElements(By.linkText(\"End of course summative assignment\"))\n    assert(elements.length)\n}\nawait driver.findElement(By.linkText(\"End of course summative assignment\")).click()\nawait driver.findElement(By.xpath(\"//section[@id=\\'region-main\\']/div[2]/div/div/div/div/form/button\")).click()\nawait driver.executeScript('window.scrollBy(0, 1000);');\nawait driver.sleep(5000)\nawait driver.switchTo().frame(0)\nconst submitAnswer = await driver.findElement(By.id(\"tinymce\"))\nawait submitAnswer.sendKeys('Submit')\nawait driver.switchTo().defaultContent()\nawait driver.findElement(By.id(\"id_submitbutton\")).click()\nconst toogle = await driver.findElement(By.id(\"user-menu-toggle\"))\nawait toogle.click()\nconst logoutButton = await driver.findElement(By.linkText(\"Log out\"))\nawait logoutButton.click()\nawait driver.findElement(By.linkText(\"Log in\")).click()\nlet teacherLogin = await driver.findElement(By.id(\"username\"))\nawait teacherLogin.clear()\nawait teacherLogin.sendKeys(\"teacher\")\nawait driver.findElement(By.id(\"password\")).click()\nawait driver.findElement(By.id(\"password\")).sendKeys(\"moodle\")\nawait driver.findElement(By.id(\"loginbtn\")).click()",
+              "code": "driver = await new Builder().forBrowser(browsername).build()\n// driver = await new Builder().forBrowser('MicrosoftEdge').build()\nvars = {}\n/****************** SETUP TEST CASE ******************************/\nawait driver.get(\"https://school.moodledemo.net/login/index.php\")\nawait driver.findElement(By.id(\"username\")).click()\nawait driver.findElement(By.id(\"username\")).sendKeys(\"student\")\nawait driver.findElement(By.id(\"password\")).click()\nawait driver.findElement(By.id(\"password\")).sendKeys(\"moodle\")\nawait driver.findElement(By.id(\"loginbtn\")).click()\nawait driver.wait(until.elementsLocated(By.xpath('(//a[@href=\"https://school.moodledemo.net/course/view.php?id=71\"])')), 5000)\nlet course = await driver.findElement(By.xpath('(//a[@href=\"https://school.moodledemo.net/course/view.php?id=71\"])'))\nawait course.click()\nawait driver.get(\"https://school.moodledemo.net/course/view.php?id=71\")\nawait driver.manage().window().maximize()\n{\n    const elements = await driver.findElements(By.linkText(\"End of course summative assignment\"))\n    assert(elements.length)\n}\nawait driver.findElement(By.linkText(\"End of course summative assignment\")).click()\nawait driver.findElement(By.xpath(\"//section[@id=\\'region-main\\']/div[2]/div/div/div/div/form/button\")).click()\nawait driver.executeScript('window.scrollBy(0, 1000);');\nawait driver.sleep(5000)\n\nawait driver.switchTo().frame(0)\nconst submitAnswer = await driver.findElement(By.id(\"tinymce\"))\nawait submitAnswer.sendKeys('Submit')\nawait driver.switchTo().defaultContent()\nawait driver.findElement(By.id(\"id_submitbutton\")).click()\nconst toogle = await driver.findElement(By.id(\"user-menu-toggle\"))\nawait toogle.click()\nconst logoutButton = await driver.findElement(By.linkText(\"Log out\"))\nawait logoutButton.click()\nawait driver.findElement(By.linkText(\"Log in\")).click()\nlet teacherLogin = await driver.findElement(By.id(\"username\"))\nawait teacherLogin.clear()\nawait teacherLogin.sendKeys(\"teacher\")\nawait driver.findElement(By.id(\"password\")).click()\nawait driver.findElement(By.id(\"password\")).sendKeys(\"moodle\")\nawait driver.findElement(By.id(\"loginbtn\")).click()",
               "err": {},
-              "uuid": "8a7a2013-7daf-4eb7-a1ce-b0d965926b66",
-              "parentUUID": "d176e859-c8da-4674-9fdf-4143c756d2ec",
+              "uuid": "5db70711-5fd8-4345-8754-b696c27feee9",
+              "parentUUID": "23702534-0b77-4353-be29-e379fd78cbe9",
               "isHook": true,
               "skipped": false
             }
           ],
           "afterHooks": [
             {
-              "title": "\"after each\" hook in \"Testing moodle 5 \"",
-              "fullTitle": "Testing moodle 5  \"after each\" hook in \"Testing moodle 5 \"",
+              "title": "\"after each\" hook in \"chrome: Testing moodle 5 \"",
+              "fullTitle": "chrome: Testing moodle 5  \"after each\" hook in \"chrome: Testing moodle 5 \"",
               "timedOut": false,
-              "duration": 2388,
+              "duration": 2572,
               "state": null,
               "speed": null,
               "pass": false,
@@ -65,40 +65,40 @@
               "context": null,
               "code": "const linkAssignment = await driver.findElement(By.linkText(\"Assignment: End of course summative assignment\"))\nawait linkAssignment.click()\nconst toogle = await driver.findElement(By.id(\"user-menu-toggle\"))\nawait toogle.click()\nconst logoutButton = await driver.findElement(By.linkText(\"Log out\"))\nawait logoutButton.click()\nawait driver.quit();",
               "err": {},
-              "uuid": "15d52db0-10a0-48ab-add1-3d6c2cbaf3de",
-              "parentUUID": "d176e859-c8da-4674-9fdf-4143c756d2ec",
+              "uuid": "75a4f8ba-e15f-4282-bcb9-58b205c8bc36",
+              "parentUUID": "23702534-0b77-4353-be29-e379fd78cbe9",
               "isHook": true,
               "skipped": false
             }
           ],
           "tests": [
             {
-              "title": "Testing moodle 5.2 - Alternative flow: Save and show next",
-              "fullTitle": "Testing moodle 5  Testing moodle 5.2 - Alternative flow: Save and show next",
+              "title": "Testing moodle 5.4 - Alternative Flow - invalid score",
+              "fullTitle": "chrome: Testing moodle 5  Testing moodle 5.4 - Alternative Flow - invalid score",
               "timedOut": false,
-              "duration": 24102,
+              "duration": 29244,
               "state": "passed",
               "speed": "slow",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "await driver.wait(until.elementsLocated(By.xpath('(//a[@href=\"https://school.moodledemo.net/course/view.php?id=71\"])')), 5000)\n        let course = await driver.findElement(By.xpath('(//a[@href=\"https://school.moodledemo.net/course/view.php?id=71\"])'))\n        await course.click()\n        await driver.get(\"https://school.moodledemo.net/course/view.php?id=71\")\n        await driver.manage().window().maximize()\n        {\n            const elements = await driver.findElements(By.linkText(\"End of course summative assignment\"))\n            assert(elements.length)\n        }\n        await driver.findElement(By.linkText(\"End of course summative assignment\")).click()\n        await driver.findElement(By.linkText(\"View all submissions\")).click()\n        {\n            const elements = await driver.findElements(By.css(\".submissionstatussubmitted\"))\n            assert(elements.length)\n        }\n        await driver.findElement(By.css(\"#mod_assign_grading-1833_r12_c5 > .btn\")).click()\n        await driver.wait(until.elementsLocated(By.id(\"id_grade\")), 5000)\n        let inputGrade = await driver.findElement(By.id(\"id_grade\"))\n        await inputGrade.click()\n        await inputGrade.sendKeys(\"90.00\")\n        await driver.sleep(5000)\n        await driver.executeScript('window.scrollBy(0, 1000);');\n        await driver.switchTo().frame(0)\n        const feedback = await driver.findElement(By.id(\"tinymce\"))\n        await feedback.sendKeys('Good job.')\n        await driver.switchTo().defaultContent()\n        await driver.findElement(By.name(\"saveandshownext\")).click()\n        {\n            const elements = await driver.findElements(By.linkText(\"Not graded\"))\n            assert(elements.length)\n        }\n        await driver.sleep(5000)\n        await driver.wait(until.elementsLocated(By.id(\"id_grade\")), 5000)\n        let inputGrade2nd =  await driver.findElement(By.id(\"id_grade\"))\n        await inputGrade2nd.click()\n        await inputGrade2nd.sendKeys(\"95\")\n        await driver.findElement(By.name(\"savechanges\")).click()\n        await driver.sleep(5000)\n        console.log(\"`set speed` is a no-op in code export, use `pause` instead\")\n        {\n            const elements = await driver.findElements(By.linkText(\"95.00\"))\n            assert(elements.length)\n        }",
+              "code": "await driver.wait(until.elementsLocated(By.xpath('(//a[@href=\"https://school.moodledemo.net/course/view.php?id=71\"])')), 5000)\n        let course = await driver.findElement(By.xpath('(//a[@href=\"https://school.moodledemo.net/course/view.php?id=71\"])'))\n        await course.click()\n        await driver.get(\"https://school.moodledemo.net/course/view.php?id=71\")\n        await driver.manage().window().maximize()\n        {\n            const elements = await driver.findElements(By.linkText(\"End of course summative assignment\"))\n            assert(elements.length)\n        }\n        await driver.findElement(By.linkText(\"End of course summative assignment\")).click()\n        await driver.findElement(By.linkText(\"View all submissions\")).click()\n        {\n            const elements = await driver.findElements(By.css(\".submissionstatussubmitted\"))\n            assert(elements.length)\n        }\n\n        await driver.findElement(By.css(\"#mod_assign_grading-1833_r12_c5 > .btn\")).click()\n        await driver.sleep(5000)\n        await driver.wait(until.elementsLocated(By.id(\"id_grade\")), 5000)\n        let inputGrade = await driver.findElement(By.id(\"id_grade\"))\n        await inputGrade.click()\n        await inputGrade.sendKeys(\"Good job\")\n        await driver.findElement(By.name(\"savechanges\")).click()\n        await driver.sleep(5000)\n        assert(await driver.findElement(By.id(\"id_error_grade\")).getText() == \"The grade provided could not be understood: Good job\")\n        await driver.findElement(By.xpath(\"//section/div[2]/div[3]\")).click()\n        await driver.sleep(3000)\n        await driver.wait(until.elementsLocated(By.id(\"id_grade\")), 5000)\n        const clearoldScore = await driver.findElement(By.id(\"id_grade\"))\n        await clearoldScore.clear()\n        await clearoldScore.sendKeys(\"80.00\")\n        await driver.findElement(By.name(\"savechanges\")).click()\n        await driver.sleep(5000)\n        {\n            const elements = await driver.findElements(By.linkText(\"80.00\"))\n            assert(elements.length)\n        }",
               "err": {},
-              "uuid": "2448daaa-7fbe-4a3a-b040-b786dafcc60c",
-              "parentUUID": "d176e859-c8da-4674-9fdf-4143c756d2ec",
+              "uuid": "7389bfdb-8712-4590-a2e3-69da339c06ad",
+              "parentUUID": "23702534-0b77-4353-be29-e379fd78cbe9",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "2448daaa-7fbe-4a3a-b040-b786dafcc60c"
+            "7389bfdb-8712-4590-a2e3-69da339c06ad"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 24102,
+          "duration": 29244,
           "root": false,
           "rootEmpty": false,
           "_timeout": 60000
